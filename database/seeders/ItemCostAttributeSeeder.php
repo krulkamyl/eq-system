@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Item;
-use App\Models\Attribute;
-use App\Models\ItemAttribute;
+use App\Models\ItemCostAttribute;
 use Illuminate\Database\Seeder;
 
-class ItemAttributeSeeder extends Seeder
+class ItemCostAttributeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,10 +16,9 @@ class ItemAttributeSeeder extends Seeder
     public function run()
     {
         Item::all()->each(function (Item $item) {
-            $code = Attribute::whereName('code')->first()->id;
             foreach($item->type->attributes as $attribute) {
-                if ($attribute->id == $code) {
-                    $itemAttribute = ItemAttribute::factory()->make();
+                if (in_array($attribute->attribute->name, ['price', 'bonus'])) {
+                    $itemAttribute = ItemCostAttribute::factory()->make();
 
                     $itemAttribute->id_item = $item->id;
                     $itemAttribute->id_attribute = $attribute->id_attribute;

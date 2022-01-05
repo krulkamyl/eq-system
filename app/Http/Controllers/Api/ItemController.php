@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Repository\Eloquent\ItemRepository;
+use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Player;
+use App\Repository\Eloquent\ItemRepository;
+use App\Repository\Eloquent\PlayerRepository;
+use Symfony\Component\HttpFoundation\Response;
 
 class ItemController extends Controller
 {
     private ItemRepository $itemRepository;
+    private PlayerRepository $playerRepository;
 
-    public function __construct(ItemRepository $itemRepository)
+    public function __construct(ItemRepository $itemRepository, PlayerRepository $playerRepository)
     {
         $this->itemRepository = $itemRepository;
+        $this->playerRepository = $playerRepository;
     }
 
     /**
@@ -57,7 +63,13 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        $player = $this->playerRepository->all()->first();
+        $item = $this->itemRepository->get($id);
+        if ($player->buyItem($item)) {
+            return response('Item purchased successfully');
+        } else {
+            return response('Item not purchased', 406);
+        }
     }
 
     /**

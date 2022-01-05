@@ -19,4 +19,8 @@ class ItemRepository implements ItemRepositoryInterface {
         return $this->itemModel->get();
     }
 
+    public function get(int $id): Item {
+        return $this->itemModel->findOrFail($id);
+    }
+
 }

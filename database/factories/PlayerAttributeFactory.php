@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ItemAttributeFactory extends Factory
+class PlayerAttributeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,7 @@ class ItemAttributeFactory extends Factory
     public function definition()
     {
         return [
-            'value' => $this->faker->numberBetween(0, 100)
+            'value' => $this->faker->numberBetween(0, 2)
         ];
     }
 }

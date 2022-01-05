@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemAttribute extends Model
+class ItemPlayer extends Model
 {
     use HasFactory;
 
@@ -26,7 +26,7 @@ class ItemAttribute extends Model
     public function attribute() {
         return $this->hasOne(Attribute::class, 'id', 'id_attribute');
     }
-
+    
     /**
      * Beautify response
      *
@@ -35,7 +35,6 @@ class ItemAttribute extends Model
     public function toArray()
     {
         return [
-            'id' => $this->id,
             'name' => $this->attribute->name,
             'value' => $this->value
         ];

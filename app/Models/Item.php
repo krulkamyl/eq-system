@@ -28,6 +28,15 @@ class Item extends Model
         return $this->hasMany(ItemAttribute::class, 'id_item', 'id');
     }
 
+    /**
+     * Get item cost attributes associated with item
+     *
+     * @return void
+     */
+    public function itemCostAttributes() {
+        return $this->hasMany(ItemCostAttribute::class, 'id_item', 'id');
+    }
+
 
     /**
      * Beautify response
@@ -40,7 +49,8 @@ class Item extends Model
             'name' => $this->name,
             'image' => $this->image,
             'type' => $this->type->name,
-            'attributes' => $this->itemAttributes->toArray()
+            'attributes' => $this->itemAttributes->toArray(),
+            'costs' => $this->itemCostAttributes->toArray()
         ];
     }
 }

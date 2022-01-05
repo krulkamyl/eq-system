@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Player;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
             AttributeSeeder::class,
             TypeAttributeSeeder::class,
             ItemSeeder::class,
-            ItemAttributeSeeder::class
+            ItemAttributeSeeder::class,
+            ItemCostAttributeSeeder::class,
+            PlayerSeeder::class,
+            PlayerDepositSeeder::class
         ]);
     }
 }

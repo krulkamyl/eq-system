@@ -7,4 +7,10 @@
 
 ## API endpoint responsible for completing this task:
 
+Getting all items:
+
 ``{{URL}}/api/item``
+
+Buying item:
+
+``{{URL}}/api/item/{id}``

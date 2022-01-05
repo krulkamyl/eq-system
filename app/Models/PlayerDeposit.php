@@ -5,21 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemAttribute extends Model
+class PlayerDeposit extends Model
 {
     use HasFactory;
 
     /**
-     * Get item attributes associated with item
-     *
-     * @return void
-     */
-    public function item() {
-        return $this->hasOne(Item::class, 'id', 'id_item');
-    }
-
-    /**
-     * Get attribute associated with item attributes
+     * Get attribute associated with deposit
      *
      * @return void
      */
@@ -27,17 +18,15 @@ class ItemAttribute extends Model
         return $this->hasOne(Attribute::class, 'id', 'id_attribute');
     }
 
-    /**
-     * Beautify response
-     *
-     * @return array
-     */
+
     public function toArray()
     {
         return [
             'id' => $this->id,
+            'id_player' => $this->id_player,
             'name' => $this->attribute->name,
             'value' => $this->value
         ];
     }
+
 }

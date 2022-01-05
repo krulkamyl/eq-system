@@ -2,13 +2,13 @@
 
 namespace App\Repository;
 
-use App\Models\Item;
+use App\Models\Player;
 use Illuminate\Support\Collection;
 
-interface ItemRepositoryInterface {
+interface PlayerRepositoryInterface {
 
     public function all(): Collection;
-
-    public function get(int $id): Item;
+    
+    public function get(int $id): Player;
 
 }

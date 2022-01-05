@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemAttributesTable extends Migration
+class CreateItemPlayerAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateItemAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_attributes', function (Blueprint $table) {
+        Schema::create('player_attributes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_item');
+            $table->unsignedBigInteger('id_item_player');
             $table->unsignedBigInteger('id_attribute');
-            $table->string('value');
+            $table->text('value');
             $table->timestamps();
 
-            $table->foreign('id_item')->references('id')->on('items');
+            $table->foreign('id_item_player')->references('id')->on('item_player');
             $table->foreign('id_attribute')->references('id')->on('attributes');
 
         });
@@ -33,6 +33,6 @@ class CreateItemAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_attributes');
+        Schema::dropIfExists('player_attributes');
     }
 }

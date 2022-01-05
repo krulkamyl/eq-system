@@ -14,7 +14,7 @@ class ItemAttributeFactory extends Factory
     public function definition()
     {
         return [
-            'value' => $this->faker->numberBetween(0, 100)
+            'value' => strtoupper($this->faker->firstName)
         ];
     }
 }

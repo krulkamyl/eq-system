@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ItemCostAttribute extends Model
 {
@@ -12,30 +13,31 @@ class ItemCostAttribute extends Model
     /**
      * Get item attributes associated with item
      *
-     * @return void
+     * @return HasOne
      */
-    public function item() {
+    public function item() : HasOne
+    {
         return $this->hasOne(Item::class, 'id', 'id_item');
     }
 
     /**
      * Get attribute associated with item attributes
      *
-     * @return void
+     * @return HasOne
      */
-    public function attribute() {
+    public function attribute() : HasOne
+    {
         return $this->hasOne(Attribute::class, 'id', 'id_attribute');
     }
-    
+
     /**
-     * Beautify response
+     * Formatting response
      *
      * @return array
      */
     public function toArray()
     {
         return [
-            'id' => $this->id,
             'name' => $this->attribute->name,
             'value' => $this->value
         ];

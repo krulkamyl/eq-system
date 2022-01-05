@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('item', ItemController::class)->only(['index', 'show']);
+Route::apiResource('item', ItemController::class)->only(['index']);
+Route::get('item/buy/{id}', [ItemController::class, 'buy']);

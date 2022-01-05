@@ -14,7 +14,7 @@ class PlayerDepositFactory extends Factory
     public function definition()
     {
         return [
-            'value' => $this->faker->numberBetween(100, 10000)
+            'value' => 10000
         ];
     }
 }

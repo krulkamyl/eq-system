@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class TypeAttribute extends Model
 {
@@ -11,19 +12,21 @@ class TypeAttribute extends Model
 
     /**
      * Get type associated with type attribute
-     * 
-     * @return void
+     *
+     * @return HasOne
      */
-    public function type() {
+    public function type() : HasOne
+    {
         return $this->hasOne(Type::class, 'id', 'id_type');
     }
 
     /**
      * Get attribute associated with type attribute
-     * 
-     * @return void
+     *
+     * @return HasOne
      */
-    public function attribute() {
+    public function attribute() : HasOne
+    {
         return $this->hasOne(Attribute::class, 'id', 'id_attribute');
     }
 }

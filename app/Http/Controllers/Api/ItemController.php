@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Item;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Player;
@@ -24,12 +25,12 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
         return response()->json(
-            $this->itemRepository->all(), 
+            $this->itemRepository->all(),
             200
         );
     }
@@ -56,12 +57,12 @@ class ItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Buy specify item
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
-    public function show($id)
+    public function buy(int $id): Response
     {
         $player = $this->playerRepository->all()->first();
         $item = $this->itemRepository->get($id);

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ItemPlayerAttributeFactory extends Factory
+class PlayerItemAttributeFactory extends Factory
 {
     /**
      * Define the model's default state.

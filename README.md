@@ -1,7 +1,13 @@
 ## Commands to run:
 
+``cd database || touch database.sqlite``
+
 ``cp .env.example .env``
+
+``php artisan key:generate``
+
 ``php artisan migrate --seed``
+
 ``php artisan serve``
 
 
@@ -13,4 +19,4 @@ Getting all items:
 
 Buying item:
 
-``{{URL}}/api/item/{id}``
+``{{URL}}/api/buy/item/{id}``

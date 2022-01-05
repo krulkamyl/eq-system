@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Item extends Model
 {
@@ -12,34 +14,37 @@ class Item extends Model
 
     /**
      * Get type associated with item
-     * 
-     * @return void
+     *
+     * @return HasOne
      */
-    public function type() {
+    public function type() : HasOne
+    {
         return $this->hasOne(Type::class, 'id', 'id_type');
     }
 
     /**
      * Get item attributes associated with item
      *
-     * @return void
+     * @return HasMany
      */
-    public function itemAttributes() {
+    public function itemAttributes() : HasMany
+    {
         return $this->hasMany(ItemAttribute::class, 'id_item', 'id');
     }
 
     /**
      * Get item cost attributes associated with item
      *
-     * @return void
+     * @return HasMany
      */
-    public function itemCostAttributes() {
+    public function itemCostAttributes() : HasMany
+    {
         return $this->hasMany(ItemCostAttribute::class, 'id_item', 'id');
     }
 
 
     /**
-     * Beautify response
+     * Formatting response
      *
      * @return array
      */

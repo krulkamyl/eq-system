@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PlayerDeposit extends Model
 {
@@ -14,15 +15,20 @@ class PlayerDeposit extends Model
      *
      * @return void
      */
-    public function attribute() {
+    public function attribute() : HasOne
+    {
         return $this->hasOne(Attribute::class, 'id', 'id_attribute');
     }
 
 
-    public function toArray()
+    /**
+     * Formatting response
+     *
+     * @return array
+     */
+    public function toArray() : array
     {
         return [
-            'id' => $this->id,
             'id_player' => $this->id_player,
             'name' => $this->attribute->name,
             'value' => $this->value

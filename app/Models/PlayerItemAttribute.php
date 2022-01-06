@@ -35,16 +35,12 @@ class PlayerItemAttribute extends Model
 
     public static function assignItemAttributeToPlayerItem(PlayerItem $playerItem) : PlayerItemAttribute
     {
-        $playerItemAttribute = new PlayerItemAttribute();
+        $playerItemAttributeRepository = new PlayerItemAttributeRepository();
 
-        $playerItemAttributeRepository = new PlayerItemAttributeRepository($playerItemAttribute);
-
-        $playerItemAttributeRepository->createModel([
+        return $playerItemAttributeRepository->createModel([
             'id_player_item' => $playerItem->id,
             'id_attribute' => Attribute::whereName('status')->first()->id,
             'value' => 0
         ]);
-
-        return $playerItemAttribute;
     }
 }

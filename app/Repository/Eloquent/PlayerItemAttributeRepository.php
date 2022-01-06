@@ -8,8 +8,11 @@ class PlayerItemAttributeRepository
 {
     private PlayerItemAttribute $playerItemAttributeModel;
 
-    public function __construct(PlayerItemAttribute $playerItemAttributeModel)
+    public function __construct(PlayerItemAttribute $playerItemAttributeModel = null)
     {
+        if (is_null($playerItemAttributeModel))
+            $playerItemAttributeModel = new PlayerItemAttribute();
+
         $this->playerItemAttributeModel = $playerItemAttributeModel;
     }
 

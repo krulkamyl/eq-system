@@ -10,8 +10,11 @@ class PlayerItemRepository implements PlayerItemRepositoryInterface {
 
     private PlayerItem $playerItemModel;
 
-    public function __construct(PlayerItem $playerItemModel)
+    public function __construct(PlayerItem $playerItemModel = null)
     {
+        if (is_null($playerItemModel))
+            $playerItemModel = new PlayerItem();
+
         $this->playerItemModel = $playerItemModel;
     }
 

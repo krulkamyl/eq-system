@@ -40,9 +40,8 @@ class PlayerItem extends Model
      */
     public static function assignPlayerToItem(Player $player, Item $item) : PlayerItem
     {
-        $playerItem = new PlayerItem();
 
-        $playerItemRepository = new PlayerItemRepository($playerItem);
+        $playerItemRepository = new PlayerItemRepository();
 
         $playerItem =  $playerItemRepository->createModel([
             'id_player' => $player->id,
